@@ -1,0 +1,73 @@
+kernel vec2 rectRotation(float roll,float yaw, float pitch,float width, float height)
+{
+vec2 dest;
+float theta,phi,r;
+vec3 psph,tsph;
+
+float pi= 3.141592654;
+// Polar angles
+theta = 2.0 * pi * (destCoord().x / width); // -pi to pi
+phi = pi * (destCoord().y / height);  // -pi/2 to pi/2
+
+// Vector in 3D space
+if (theta<pi/2.0)
+{
+psph.x = sin(phi) * cos(theta);
+psph.y = sin(phi) * sin(theta);
+}
+else if (theta<pi)
+{
+psph.x = -1.0* sin(phi) * cos(pi-theta);
+psph.y =sin(phi) * sin(pi-theta);
+}
+else if (theta<pi*3.0/2.0)
+{
+psph.x =-1.0* sin(phi) * cos(theta-pi);
+psph.y =-1.0* sin(phi) * sin(theta-pi);
+}
+else
+{
+psph.x =sin(phi) * cos(2.0*pi-theta);
+psph.y =-1.0*sin(phi) * sin(2.0*pi-theta);
+}
+
+psph.z = cos(phi);
+
+//transform matrix multiply
+vec3 firstRow,secondRow,thirdRow;
+
+firstRow.x=cos(pitch)*cos(yaw);
+firstRow.y=-1.0*cos(roll)*sin(yaw)+sin(roll)*sin(pitch)*cos(yaw);
+firstRow.z=sin(roll)*sin(yaw)+cos(roll)*sin(pitch)*cos(yaw);
+
+secondRow.x=cos(pitch)*sin(yaw);
+secondRow.y=cos(roll)*cos(yaw)+sin(roll)*sin(pitch)*sin(yaw);
+secondRow.z=-1.0*sin(roll)*cos(yaw)+cos(roll)*sin(pitch)*sin(yaw);
+
+thirdRow.x=-1.0*sin(pitch);
+thirdRow.y=sin(roll)*cos(pitch);
+thirdRow.z=cos(roll)*cos(pitch);
+
+tsph.x=psph.x*firstRow.x+psph.y*firstRow.y+psph.z*firstRow.z;
+tsph.y=psph.x*secondRow.x+psph.y*secondRow.y+psph.z*secondRow.z;
+tsph.z=psph.x*thirdRow.x+psph.y*thirdRow.y+psph.z*thirdRow.z;
+
+// change back to rect cord
+phi=acos(tsph.z);
+
+if (tsph.x>=0.0 && tsph.y>=0.0)
+theta=atan(abs(tsph.y/tsph.x));
+else if (tsph.x<=0.0 && tsph.y>=0.0 )
+theta=pi-atan(abs(tsph.y/tsph.x));
+else if (tsph.x<=0.0 && tsph.y<=0.0)
+theta=pi+atan(abs(tsph.y/tsph.x));
+else if (tsph.x>=0.0 && tsph.y<=0.0)
+theta=pi*2.0-atan(abs(tsph.y/tsph.x));
+
+dest.x=((theta)/(2.0*pi))*width;
+dest.y=(phi/pi)*height;
+
+return dest;
+}
+
+

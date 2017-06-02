@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'photosphereRotation_Example' do
+  pod 'photosphereRotation', :path => '../'
+
+  target 'photosphereRotation_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
