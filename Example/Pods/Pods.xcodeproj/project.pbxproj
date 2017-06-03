@@ -61,9 +61,9 @@
 		D6046CEAD6A67F50A8776D4A00A9F9A3 /* Pods-photosphereRotation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-photosphereRotation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6BF469AAA247ACD2BBB25D6BA22D2BF /* Pods-photosphereRotation_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-photosphereRotation_Example.modulemap"; sourceTree = "<group>"; };
 		DBB8C954AEFBA17E42FE10B76B2A1748 /* Pods-photosphereRotation_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-photosphereRotation_Example-dummy.m"; sourceTree = "<group>"; };
-		EA40A5141EE1AA3900BCB1F5 /* rectRotation.ciwarpkernel */ = {isa = PBXFileReference; lastKnownFileType = text; path = rectRotation.ciwarpkernel; sourceTree = "<group>"; };
 		EA40A5151EE1AA4D00BCB1F5 /* customFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customFilter.m; sourceTree = "<group>"; };
 		EA40A5161EE1AA4D00BCB1F5 /* customFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customFilter.h; sourceTree = "<group>"; };
+		EA40A5191EE24FAE00BCB1F5 /* rectRotation.ciwarpkernel */ = {isa = PBXFileReference; lastKnownFileType = text; name = rectRotation.ciwarpkernel; path = Assets/rectRotation.ciwarpkernel; sourceTree = "<group>"; };
 		FD6D422B0114A77A9A060F697EBFCB91 /* Pods-photosphereRotation_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-photosphereRotation_Tests.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,7 +230,7 @@
 		EA40A5131EE1AA1B00BCB1F5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				EA40A5141EE1AA3900BCB1F5 /* rectRotation.ciwarpkernel */,
+				EA40A5191EE24FAE00BCB1F5 /* rectRotation.ciwarpkernel */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
